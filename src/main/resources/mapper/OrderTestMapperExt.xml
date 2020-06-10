@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pei.mybatis_test.mapper.mapperExt.OrderTestMapperExt" >
+  <resultMap id="BaseResultMap" type="com.pei.mybatis_test.pojo.OrderTest" >
+    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, order_num, num
+  </sql>
+  <select id="queryOrdByOrdNum" parameterType="string" resultMap="BaseResultMap">
+    select * from order_test where 1=1
+    <if test="ordNum != null and ordNum != ''">
+      and order_num = #{ordNum,jdbcType=VARCHAR}
+    </if>
+  </select>
+</mapper>
